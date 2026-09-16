@@ -21,11 +21,15 @@ if($_SERVER["REQUEST_METHOD"]){
     if(empty($_POST["nombre"]) || empty($_POST["correo"]) || empty($_POST["descripcion"])){
         $errores[] = "Por favor rellene todos los parametros";
     }
-    if(!empty($errores)){
-        $_SESSION["datos"][] = [
+    if(empty($errores)){
+        $_SESSION["datos"] = [
             "nombre" => $_POST["nombre"],
         ];
     }
+}
+
+function calcularDescuento(){
+
 }
 
 ?>
@@ -70,7 +74,13 @@ if($_SERVER["REQUEST_METHOD"]){
         </form>
     </div>
     <div class="container-info">
-        
+        <h2>Comprobante de solicitud:</h2>
+        <?php if($_SERVER["REQUEST_METHOD"] === "POST"): ?>
+            <label for="">Nombre: <?= $_POST["nombre"] ?></label>
+            <label for="">Correo: <?= $_POST["correo"] ?></label>
+
+
+        <?php endif; ?>
     </div>
 </body>
 </html>
