@@ -22,8 +22,16 @@ if($_SERVER["REQUEST_METHOD"]){
         $errores[] = "Por favor rellene todos los parametros";
     }
     if(empty($errores)){
+
+        $precio = $SERVICIOS_DISPONIBLES[$_POST["servicio"]]["precio"];
         $_SESSION["datos"] = [
             "nombre" => $_POST["nombre"],
+            "correo" => $_POST["correo"],
+            "tipo" => $_POST["tipo_dispositivo"],
+            "marca" => $_POST["marca_seleccionada"],
+            "descripcion" => $_POST["descripcion"],
+            "servicio" => $_POST["servicio"],
+            ""
         ];
     }
 }
@@ -78,7 +86,10 @@ function calcularDescuento(){
         <?php if($_SERVER["REQUEST_METHOD"] === "POST"): ?>
             <label for="">Nombre: <?= $_POST["nombre"] ?></label>
             <label for="">Correo: <?= $_POST["correo"] ?></label>
-
+            <label for="">Tipo de dispositivo seleccionado: <?= $_POST["tipo_dispositivo"] ?></label>
+            <label for="">Tipo de marca: <?=  $_POST["marca_seleccionada"]?></label>
+            <label for="">descripción del problema: <?=  $_POST["descripcion"]?></label>
+            <label for="">Servicio seleccionado: <?=  $_POST["servicio"]?></label>
 
         <?php endif; ?>
     </div>
